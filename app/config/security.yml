@@ -6,10 +6,7 @@ security:
     providers:
         db_provider:
                     entity:
-                        class: AppBundle:User
-                        property: username
-                        # if you're using multiple entity managers
-                        # manager_name: customer
+                        class: UserBundle:User
         in_memory:
             memory: ~
 
@@ -26,6 +23,11 @@ security:
             form_login:
                         login_path: login
                         check_path: login
+        secured_area:
+                    form_login:
+                        csrf_token_generator: security.csrf.token_manager
+
+
     encoders:
         UserBundle\Entity\User:
              algorithm: bcrypt
