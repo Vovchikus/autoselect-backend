@@ -1,6 +1,6 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,9 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
-
-  const ROLE_CUSTOMER = 'ROLE_CUSTOMER';
-
   /**
    * @ORM\Id
    * @ORM\Column(type="integer")

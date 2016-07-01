@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+libxml_disable_entity_loader(false);
 
 /**
  * @var Composer\Autoload\ClassLoader

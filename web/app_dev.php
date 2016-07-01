@@ -17,7 +17,7 @@ use Symfony\Component\Debug\Debug;
 //    header('HTTP/1.0 403 Forbidden');
 //    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 //}
-
+libxml_disable_entity_loader(false);
 /**
  * @var Composer\Autoload\ClassLoader $loader
  */
@@ -30,3 +30,4 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
