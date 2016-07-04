@@ -1,8 +1,0 @@
---TEST--
-"badge" function
---TEMPLATE--
-{{ badge('42') }}
---DATA--
-return array();
---EXPECT--
-<span class="badge">42</span>
