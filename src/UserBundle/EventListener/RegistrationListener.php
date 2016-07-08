@@ -79,13 +79,6 @@ class RegistrationListener implements EventSubscriberInterface
     $user->setEnabled(false);
     $user->setConfirmationToken($this->tokenGenerator->generateToken());
     $user->setRoles([User::ROLE_DEFAULT, User::ROLE_CUSTOMER]);
-    $this->mailer->sendConfirmationEmailMessage($user);
-
-    $event->setResponse(new RedirectResponse('/grout'));
-
-    //    $url = $this->router->generate('rsWelcomeBundle_check_full_register');
-    //
-    //    $event->setResponse(new RedirectResponse($url));
   }
 
 }

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Class CustomerController
@@ -14,11 +15,14 @@ class CustomerController extends Controller
 {
 
   /**
-   * @Route("/customer/main", name="customer_main")
+   * @Security("has_role('ROLE_CUSTOMER')")
+   * @Route("/customer/index", name="customer_index")
+   * @param Request $request
+   * @return \Symfony\Component\HttpFoundation\Response
    */
-  public function mainAction()
+  public function indexAction(Request $request)
   {
-    print_r('page for customers');
+    return $this->render('AppBundle:Customer:index.html.twig');
   }
 
 }

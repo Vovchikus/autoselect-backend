@@ -100,9 +100,17 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: UserBundle\Entity\User
+    service:
+            mailer: fos_user.mailer.twig_swift
     registration:
             form:
                 type: UserBundle\Form\RegistrationType
+            confirmation:
+                        enabled: true
+                        template: UserBundle:Email:confirmation.html.twig
+                        from_email:
+                                    address:        rampart@yandex.ru
+                                    sender_name:    info
 
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/DoctrineMigrations"

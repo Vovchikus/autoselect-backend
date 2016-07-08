@@ -9,9 +9,15 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
-    user_registration_success:
+    app.registration.success:
             class: UserBundle\EventListener\RegistrationListener
             arguments: [@router, @service_container, @fos_user.util.token_generator, @fos_user.mailer]
+            tags:
+                - { name: kernel.event_subscriber }
+
+    app.registration.confirm:
+            class: UserBundle\EventListener\ConfirmationListener
+            arguments: [@router]
             tags:
                 - { name: kernel.event_subscriber }
 
