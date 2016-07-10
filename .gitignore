@@ -10,6 +10,7 @@
 /app/phpunit.xml
 /build/
 /vendor/
+/app/vendor
 /bin/
 /composer.phar
 .idea/
