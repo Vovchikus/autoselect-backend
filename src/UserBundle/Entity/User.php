@@ -28,4 +28,15 @@ class User extends BaseUser
   {
     parent::__construct();
   }
+
+  /**
+   * @return array
+   */
+  public function getContent()
+  {
+    return [
+      'username' => $this->getUsername()
+    ];
+  }
+
 }

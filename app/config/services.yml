@@ -4,10 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-    app.form.registration:
-        class: UserBundle\Form\RegistrationType
-        tags:
-            - { name: form.type, alias: app_user_registration }
     app.registration.success:
             class: UserBundle\EventListener\RegistrationListener
             arguments: [@router, @service_container, @fos_user.util.token_generator, @fos_user.mailer]

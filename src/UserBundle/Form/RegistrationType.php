@@ -46,7 +46,7 @@ class RegistrationType extends AbstractType
    */
   public function getBlockPrefix()
   {
-    return 'app_user_registration';
+    return 'user_registration';
   }
 
   /**

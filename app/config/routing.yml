@@ -8,3 +8,7 @@ fos_user_registration_confirm:
 app:
     resource: '@AppBundle/Controller/'
     type:     annotation
+
+rest_app:
+    type: rest
+    resource: "@AppBundle/Resources/config/routing.yml"
