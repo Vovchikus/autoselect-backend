@@ -39,7 +39,9 @@ class OrderController extends Controller
     foreach ($orders as $order) {
       $result[] = $order->getContent();
     }
-    return new JsonResponse($result, Response::HTTP_OK, [], $request);
+    $response = new CustomResponse($result, Response::HTTP_OK, [], $request);
+
+    return $response->getResponse();
   }
 
   /**

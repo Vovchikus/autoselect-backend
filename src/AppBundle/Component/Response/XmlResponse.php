@@ -43,7 +43,6 @@ class XmlResponse extends Response
   {
     $xml = $this->prepareXml($data);
     $this->headers->set('Content-Type', 'application/xml');
-    header('Content-Type: application/xml');
     return $this->setContent($xml->asXML());
   }
 

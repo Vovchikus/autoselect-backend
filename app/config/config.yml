@@ -117,16 +117,3 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
-
-
-fos_rest:
-    param_fetcher_listener: true
-    body_listener: true
-    format_listener:
-        rules:
-            - priorities: [html, json, xml]
-            - fallback_format: html, json, xml
-    view:
-        view_response_listener: 'force'
-    exception:
-             enabled: false

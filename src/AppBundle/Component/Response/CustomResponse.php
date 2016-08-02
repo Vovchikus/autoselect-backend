@@ -4,6 +4,7 @@ namespace AppBundle\Component\Response;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CustomResponse
@@ -12,6 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class CustomResponse
 {
 
+  /**
+   * @var null
+   */
   private $data;
 
   /**
@@ -30,6 +34,11 @@ class CustomResponse
   private $request;
 
   /**
+   * @var Response
+   */
+  private $response;
+
+  /**
    * CustomResponse constructor.
    * @param null $data
    * @param int $status
@@ -42,7 +51,7 @@ class CustomResponse
     $this->status = $status;
     $this->headers = $headers;
     $this->request = $request;
-    $this->processResponse();
+    $this->response = $this->processResponse();
   }
 
 
@@ -58,6 +67,14 @@ class CustomResponse
       default:
         return new JsonResponse($this->data, $this->status, $this->headers);
     }
+  }
+
+  /**
+   * @return XmlResponse|JsonResponse
+   */
+  public function getResponse()
+  {
+    return $this->response;
   }
 
 
