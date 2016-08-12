@@ -2,8 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Component\Response\CustomResponse;
-use AppBundle\Component\Response\XmlResponse;
 use AppBundle\Entity\Order;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,9 +37,8 @@ class OrderController extends Controller
     foreach ($orders as $order) {
       $result[] = $order->getContent();
     }
-    $response = new CustomResponse($result, Response::HTTP_OK, [], $request);
 
-    return $response->getResponse();
+    return new JsonResponse($result, Response::HTTP_OK, [], $request);
   }
 
   /**
@@ -61,47 +58,8 @@ class OrderController extends Controller
     $order = $orderRepository->find($id);
     $result = $order->getContent();
 
-    if ($request->headers->get('Content-Type') == 'application/xml') {
-      return new XmlResponse($result, Response::HTTP_OK, [], 'order');
-    }
-
     return new JsonResponse($result, Response::HTTP_OK);
 
-  }
-
-
-  /**
-   * @Route("/api/order")
-   * @Method("POST")
-   */
-  public function newOrder(Request $request)
-  {
-
-    try {
-
-      $content = $request->getContent();
-      if (!is_string($content)) {
-
-      }
-    } catch (\Exception $ex) {
-
-    }
-
-    print_r($content);
-    die;
-
-    $user = $this->getDoctrine()->getManager()->getRepository(User::class);
-    $user->find(1);
-
-    $order = new Order();
-    $order->setTitle('Keyboard');
-    $order->setUser($user);
-
-    $em = $this->getDoctrine()->getManager();
-    $em->persist($order);
-    $em->flush();
-
-    return new Response($order, 201);
   }
 
 
