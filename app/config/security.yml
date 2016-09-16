@@ -25,6 +25,9 @@ security:
                 default_target_path: customer_index
             logout:       true
             anonymous:    true
+            guard:
+                 authenticators:
+                 - app.token_authenticator
 
         secured_area:
                     form_login:

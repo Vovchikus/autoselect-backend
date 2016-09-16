@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use UserBundle\Entity\User;
 
 /**
  * Class OrderController
@@ -38,7 +37,7 @@ class OrderController extends Controller
       $result[] = $order->getContent();
     }
 
-    return new JsonResponse($result, Response::HTTP_OK, [], $request);
+    return new JsonResponse($result, Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
   }
 
   /**

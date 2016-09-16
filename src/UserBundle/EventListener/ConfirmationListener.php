@@ -48,11 +48,9 @@ class ConfirmationListener implements EventSubscriberInterface
     $user = $event->getUser();
     if (in_array(User::ROLE_CUSTOMER, $user->getRoles())) {
       $url = $this->router->generate('customer_index');
-      $event->setResponse(new RedirectResponse($url));
     } else {
       $url = $this->router->generate('/');
-      $event->setResponse(new RedirectResponse($url));
     }
+    $event->setResponse(new RedirectResponse($url));
   }
-
 }

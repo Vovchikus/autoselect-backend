@@ -14,4 +14,7 @@ services:
             arguments: [@router]
             tags:
                 - { name: kernel.event_subscriber }
+    app.token_authenticator:
+            class: AppBundle\Component\Authenticate\TokenAuthenticator
+            autowire: true
 
