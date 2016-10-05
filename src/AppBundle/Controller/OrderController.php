@@ -18,7 +18,7 @@ class OrderController extends Controller
 {
 
   /**
-   * @Route("/api/order")
+   * @Route("/api/orders")
    * @Method("GET")
    * @param Request $request
    * @return Response
@@ -38,6 +38,17 @@ class OrderController extends Controller
     }
 
     return new JsonResponse($result, Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
+  }
+
+  /**
+   * @Route("/api/order")
+   * @Method("POST")
+   * @param Request $request
+   * @return Response
+   */
+  public function postOrderAction(Request $request)
+  {
+    return new JsonResponse('hello', Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
   }
 
   /**

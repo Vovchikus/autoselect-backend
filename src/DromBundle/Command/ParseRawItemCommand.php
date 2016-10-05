@@ -37,10 +37,8 @@ class ParseRawItemCommand extends Command
 
     $fh = fopen($resource, 'r');
     $client = new Client(['base_uri' => Drom::RESOURCE_URL]);
-    while (($data = fgetcsv($fh, 1000, ",")) !== false) {
+    while (($data = fgetcsv($fh, 100000000, ",")) !== false) {
       foreach ($data as $url) {
-
-        $output->writeln(sprintf('processing url %s', $url));
 
         try {
           $response = $client->get($url, [
@@ -66,6 +64,7 @@ class ParseRawItemCommand extends Command
         }
         $splits = explode('/', $url);
         $name = array_pop($splits);
+
         if ($name) {
           $dir = sprintf('%s/%s', self::TARGET_DIR, $name);
           file_put_contents($dir, $container);
