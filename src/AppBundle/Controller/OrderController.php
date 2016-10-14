@@ -48,7 +48,15 @@ class OrderController extends Controller
    */
   public function postOrderAction(Request $request)
   {
-    return new JsonResponse('hello', Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
+    $content = json_decode($request->getContent());
+
+    $order = new Order();
+    $order->setId(1);
+    $order->setTitle($content->title);
+
+    $result = ['title' => $order->getTitle()];
+
+    return new JsonResponse($result, Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
   }
 
   /**
