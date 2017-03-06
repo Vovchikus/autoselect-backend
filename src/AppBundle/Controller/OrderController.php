@@ -37,7 +37,7 @@ class OrderController extends Controller
       $result[] = $order->getContent();
     }
 
-    return new JsonResponse($result, Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
+    return new JsonResponse($result, Response::HTTP_OK, [], $request);
   }
 
   /**
@@ -56,7 +56,7 @@ class OrderController extends Controller
 
     $result = ['title' => $order->getTitle()];
 
-    return new JsonResponse($result, Response::HTTP_OK, ['Access-Control-Allow-Origin' => '*'], $request);
+    return new JsonResponse($result, Response::HTTP_OK, [], $request);
   }
 
   /**
@@ -79,6 +79,4 @@ class OrderController extends Controller
     return new JsonResponse($result, Response::HTTP_OK);
 
   }
-
-
 }
